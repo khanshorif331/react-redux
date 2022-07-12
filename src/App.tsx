@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { RootState } from "./app/store";
+import CustomerCard from "./components/CustomerCard";
 import ReservationCard from "./components/ReservationCard";
 import { addReservation } from "./features/reservationSlice";
 
@@ -11,6 +12,7 @@ function App() {
 
 
   const reservations = useSelector((state: RootState) => state.reservations.value)
+  const customers = useSelector((state: RootState) => state.customer.value)
 
   const dispatch = useDispatch()
 
@@ -21,7 +23,7 @@ function App() {
     dispatch(addReservation(reservationNameInput))
     setReservationNameInput('')
   }
-
+  //  return <ReservationCard name={name}></ReservationCard>} )}
   return (
     <div className="App">
       <div className="container">
@@ -30,7 +32,7 @@ function App() {
           <div>
             <h5 className="reservation-header">Reservations</h5>
             <div className="reservation-cards-container">
-              {reservations.map((name:string)=><ReservationCard name={name}></ReservationCard>)}
+              {reservations.map((name,index)=><ReservationCard name={name} index={index}></ReservationCard>)}
             </div>
           </div>
           <div className="reservation-input-container">
@@ -42,20 +44,10 @@ function App() {
           </div>
         </div>
         <div className="customer-food-container">
-          <div className="customer-food-card-container">
-            <p>Selena Gomez</p>
-            <div className="customer-foods-container">
-              <div className="customer-food"></div>
-              <div className="customer-food-input-container">
-                <input 
-               
-                />
-                <button 
-               
-                >Add</button>
-              </div>
-            </div>
-          </div>
+        {customers.map((customer)=>{
+          return <CustomerCard></CustomerCard>
+        })}
+        
         </div>
       </div>
     </div>
