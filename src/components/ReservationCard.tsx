@@ -10,7 +10,7 @@ interface ReservationCardTypes {
   index : number
 }
 
-export default function ReservationCard({name}:ReservationCardTypes,{index}:ReservationCardTypes) {
+export default function ReservationCard({name,index}:ReservationCardTypes) {
   const dispatch  = useDispatch()
 
 
@@ -24,3 +24,4 @@ export default function ReservationCard({name}:ReservationCardTypes,{index}:Rese
     }))
   }} className="reservation-card-container">{name}</div>
 }
+ 

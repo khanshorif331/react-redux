@@ -1,19 +1,29 @@
 import React from 'react'
 
-export default function CustomerCard() {
+
+interface CustomerCardType {
+    id : string,
+    name: string,
+    food: string[]
+}
+
+
+export default function CustomerCard({id,name,food}:CustomerCardType) {
   return (
 
     <div className="customer-food-card-container">
-        <p>Selena Gomez</p>
+        <p>{name}</p>
         <div className="customer-foods-container">
-              <div className="customer-food"></div>
+              <div className="customer-food">
+                {food.map(food => <p>{food}</p>)}
+              </div>
               <div className="customer-food-input-container">
                 <input 
                
                 />
                 <button 
                
-                >Add</button>
+                >Add</button> 
               </div>
             </div>
   </div>
